@@ -1,0 +1,92 @@
+import React, {ReactNode} from 'react';
+import {
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  ViewStyle,
+} from 'react-native';
+import {colors} from '../constants/colors';
+import {fontSize, fonts} from '../constants/fonts';
+import {ph, wp} from '../utils/ResponsiveScreen';
+
+export enum ButtonType {
+  border,
+  fill,
+}
+
+export interface IButtonProps
+  extends React.ComponentProps<typeof TouchableOpacity> {
+  disabled?: boolean;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+  title?: string;
+  children?: ReactNode;
+  rightComponent?: ReactNode;
+  leftComponent?: ReactNode;
+  onPress?: () => void;
+  type?: ButtonType;
+}
+
+const CustomButton = (props: IButtonProps) => {
+  const {
+    disabled,
+    style,
+    textStyle,
+    title,
+    children,
+    rightComponent,
+    leftComponent,
+    onPress,
+    type,
+    ...rest
+  } = props;
+  console.log('🚀 ~ CustomButton ~ textStyle:', textStyle);
+
+  const buttonStyle = [
+    type == ButtonType.border ? styles.btnBorderStyle : styles.btnStyle,
+    disabled && {backgroundColor: colors.disable},
+    {...(style as ViewStyle)},
+  ];
+
+  return (
+    <TouchableOpacity
+      disabled={disabled}
+      style={buttonStyle}
+      onPress={onPress}
+      hitSlop={{top: ph(10), left: ph(10), right: ph(10), bottom: ph(10)}}
+      {...rest}>
+      {leftComponent && leftComponent}
+      <Text style={[styles.btnText, textStyle]}>{title}</Text>
+      {rightComponent && rightComponent}
+    </TouchableOpacity>
+  );
+};
+
+export default CustomButton;
+
+const styles = StyleSheet.create({
+  btnStyle: {
+    backgroundColor: "green",
+    padding: ph(16),
+    borderRadius: wp(50),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnBorderStyle: {
+    backgroundColor: colors.white,
+    padding: ph(16),
+    borderRadius: wp(50),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnText: {
+    color: colors.white,
+    fontSize: fontSize.FS_18,
+    fontFamily: fonts.SEMIBOLD,
+    textAlign: 'center',
+    letterSpacing: 1.5,
+  },
+});
