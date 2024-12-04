@@ -57,16 +57,27 @@ const CustomButton = (props: IButtonProps) => {
 
   return (
     <>
-    {
-      isLinear ? (
-      <LinearGradient
-        colors={['#0A2F1E', '#118368', '#0A2F1E']}
-        style={btngradiantStyle}
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 0}}>
+      {isLinear ? (
+        <LinearGradient
+          colors={['#0A2F1E', '#118368', '#0A2F1E']}
+          style={btngradiantStyle}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}>
+          <TouchableOpacity
+            disabled={disabled}
+            // style={buttonStyle}
+            onPress={onPress}
+            hitSlop={{top: ph(10), left: ph(10), right: ph(10), bottom: ph(10)}}
+            {...rest}>
+            {leftComponent && leftComponent}
+            <Text style={[styles.btnText, textStyle]}>{title}</Text>
+            {rightComponent && rightComponent}
+          </TouchableOpacity>
+        </LinearGradient>
+      ) : (
         <TouchableOpacity
           disabled={disabled}
-          // style={buttonStyle}
+          style={buttonStyle}
           onPress={onPress}
           hitSlop={{top: ph(10), left: ph(10), right: ph(10), bottom: ph(10)}}
           {...rest}>
@@ -74,20 +85,7 @@ const CustomButton = (props: IButtonProps) => {
           <Text style={[styles.btnText, textStyle]}>{title}</Text>
           {rightComponent && rightComponent}
         </TouchableOpacity>
-      </LinearGradient>
-      ) : (
-      <TouchableOpacity
-        disabled={disabled}
-        style={buttonStyle}
-        onPress={onPress}
-        hitSlop={{top: ph(10), left: ph(10), right: ph(10), bottom: ph(10)}}
-        {...rest}>
-        {leftComponent && leftComponent}
-        <Text style={[styles.btnText, textStyle]}>{title}</Text>
-        {rightComponent && rightComponent}
-      </TouchableOpacity>
-      )
-    }
+      )}
     </>
   );
 };

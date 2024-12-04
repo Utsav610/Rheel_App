@@ -7,8 +7,12 @@ export default routeNames = {
     SignUp : "SignUp",
 
     // Dashboard Flow
+    Dashboard : "Dashboard",
     Home : "Home",
     Favorite : "Favorite",
     My_Inquiries : "My_Inquiries",
     Profile : "Profile",
+
+    // other screens
+    AllProperties : 'AllProperties',
 }

@@ -30,10 +30,9 @@ export const colors = {
   success : "#04AA6D",
   orange:'#FF9A00',
   error: "#f44336",
-  slate_gray:'#A0ABAD',
-  sample_bg : "#E9E9E9",
-  smoky_blue:"#667085",
-  disable_pack:'#ABABAB',
-  light_orage:'rgba(255, 154, 0, 0.8)',
-  payment_faild:'#FFE4E4'
+
+  title : "#C2931C",
+  defaultText : "#6B6B6B",
+  backgroundContainer : '#F8FFFC',
+  minColor : '#016D54'
 };

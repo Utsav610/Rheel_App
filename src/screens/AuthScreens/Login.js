@@ -17,29 +17,29 @@ const Login = () => {
   const [check, setCheck] = useState(0);
 
   const validationSchema = Yup.object().shape({
-    txtEmail: Yup.string()
-      .email('Invalid email address')
-      .matches(
-        /^[a-z][a-z0-9._%+-]*@[a-z0-9.-]+\.[a-z]{2,}$/,
-        'Invalid email address (only lowercase letters allowed)',
-      )
-      .required('* Please enter a valid email address'),
-    // .nullable(true),
-    txtPassword: Yup.string()
-      .required('Password is required')
-      .min(8, 'Password must be at least 8 characters long')
-      .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
-      .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
-      .matches(/[0-9]/, 'Password must contain at least one number')
-      .matches(
-        /[!@#$%^&*(),.?":{}|<>]/,
-        'Password must contain at least one special character',
-      ),
+    // txtEmail: Yup.string()
+    //   .email('Invalid email address')
+    //   .matches(
+    //     /^[a-z][a-z0-9._%+-]*@[a-z0-9.-]+\.[a-z]{2,}$/,
+    //     'Invalid email address (only lowercase letters allowed)',
+    //   )
+    //   .required('* Please enter a valid email address'),
+    // // .nullable(true),
+    // txtPassword: Yup.string()
+    //   .required('Password is required')
+    //   .min(8, 'Password must be at least 8 characters long')
+    //   .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+    //   .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
+    //   .matches(/[0-9]/, 'Password must contain at least one number')
+    //   .matches(
+    //     /[!@#$%^&*(),.?":{}|<>]/,
+    //     'Password must contain at least one special character',
+    //   ),
   });
 
   const btnLogin = values => {
     console.log('values :- ', values);
-    
+    navigate(routeNames.Dashboard)
   };
 
   return (

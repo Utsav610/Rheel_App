@@ -50,8 +50,8 @@ const HeaderView = (props: IHeaderProps) => {
       style={[
         styles.container,
         isBack
-          ? {paddingLeft: ph(5), paddingRight: ph(15)}
-          : {paddingHorizontal: ph(15)},
+          ? {paddingLeft: ph(15), paddingRight: ph(15)}
+          : {paddingHorizontal: ph(20)},
       ]}>
       {isBack && (
         <TouchableOpacity
@@ -112,7 +112,7 @@ const HeaderView = (props: IHeaderProps) => {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: ph(15),
-    marginHorizontal: ph(15),
+    // marginHorizontal: ph(15),
     paddingVertical: ph(10),
     alignItems: 'center',
     flexDirection: 'row',

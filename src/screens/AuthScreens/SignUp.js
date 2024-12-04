@@ -8,7 +8,7 @@ import {ph, wp} from '../../utils/ResponsiveScreen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { fonts, fontSize } from '../../constants/fonts';
 import InputText from '../../components/TextInputView';
-import { navigate } from '../../navigation/RootNavigation';
+import { goBack, navigate } from '../../navigation/RootNavigation';
 import routeNames from '../../constants/routeNames';
 
 import {Formik} from 'formik';
@@ -68,6 +68,7 @@ const SignUp = () => {
     <SafeAreaWrapper>
         <HeaderView
           isBack={true}
+          onBackPress={() => goBack()}
           //    title={true}
           //    titleText="Sign Up"
           // titleImg={true}
@@ -234,7 +235,7 @@ const SignUp = () => {
                     gap: ph(5),
                     justifyContent: 'center',
                     marginTop: ph(20),
-                    marginBottom: ph(20)
+                    marginBottom: ph(20),
                   }}>
                   <Text
                     style={{
@@ -243,7 +244,9 @@ const SignUp = () => {
                     }}>
                     Have an account?
                   </Text>
-                  <HomeIcon />
+                  <View>
+
+                  </View>
                   <TouchableOpacity onPress={() => navigate(routeNames.Login)}>
                     <Text
                       style={{
