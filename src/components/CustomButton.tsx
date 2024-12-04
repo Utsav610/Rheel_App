@@ -11,6 +11,7 @@ import {
 import {colors} from '../constants/colors';
 import {fontSize, fonts} from '../constants/fonts';
 import {ph, wp} from '../utils/ResponsiveScreen';
+import LinearGradient from 'react-native-linear-gradient';
 
 export enum ButtonType {
   border,
@@ -24,6 +25,7 @@ export interface IButtonProps
   textStyle?: StyleProp<TextStyle>;
   title?: string;
   children?: ReactNode;
+  isLinear?: boolean;
   rightComponent?: ReactNode;
   leftComponent?: ReactNode;
   onPress?: () => void;
@@ -39,11 +41,11 @@ const CustomButton = (props: IButtonProps) => {
     children,
     rightComponent,
     leftComponent,
+    isLinear = false,
     onPress,
     type,
     ...rest
   } = props;
-  console.log('🚀 ~ CustomButton ~ textStyle:', textStyle);
 
   const buttonStyle = [
     type == ButtonType.border ? styles.btnBorderStyle : styles.btnStyle,
@@ -51,17 +53,42 @@ const CustomButton = (props: IButtonProps) => {
     {...(style as ViewStyle)},
   ];
 
+  const btngradiantStyle = [styles.btnLGStyle, {...(style as ViewStyle)}];
+
   return (
-    <TouchableOpacity
-      disabled={disabled}
-      style={buttonStyle}
-      onPress={onPress}
-      hitSlop={{top: ph(10), left: ph(10), right: ph(10), bottom: ph(10)}}
-      {...rest}>
-      {leftComponent && leftComponent}
-      <Text style={[styles.btnText, textStyle]}>{title}</Text>
-      {rightComponent && rightComponent}
-    </TouchableOpacity>
+    <>
+    {
+      isLinear ? (
+      <LinearGradient
+        colors={['#0A2F1E', '#118368', '#0A2F1E']}
+        style={btngradiantStyle}
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}>
+        <TouchableOpacity
+          disabled={disabled}
+          // style={buttonStyle}
+          onPress={onPress}
+          hitSlop={{top: ph(10), left: ph(10), right: ph(10), bottom: ph(10)}}
+          {...rest}>
+          {leftComponent && leftComponent}
+          <Text style={[styles.btnText, textStyle]}>{title}</Text>
+          {rightComponent && rightComponent}
+        </TouchableOpacity>
+      </LinearGradient>
+      ) : (
+      <TouchableOpacity
+        disabled={disabled}
+        style={buttonStyle}
+        onPress={onPress}
+        hitSlop={{top: ph(10), left: ph(10), right: ph(10), bottom: ph(10)}}
+        {...rest}>
+        {leftComponent && leftComponent}
+        <Text style={[styles.btnText, textStyle]}>{title}</Text>
+        {rightComponent && rightComponent}
+      </TouchableOpacity>
+      )
+    }
+    </>
   );
 };
 
@@ -69,7 +96,13 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   btnStyle: {
-    backgroundColor: "green",
+    backgroundColor: 'green',
+    padding: ph(16),
+    borderRadius: wp(50),
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnLGStyle: {
     padding: ph(16),
     borderRadius: wp(50),
     alignItems: 'center',

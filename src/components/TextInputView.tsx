@@ -29,6 +29,8 @@ export interface IInputTextProps
   leftComponent?: ReactNode;
   onChangeText: (text: string) => void;
   onPress?: () => void;
+  onFocus?: (event: any) => void;
+  onBlur?: (event: any) => void;
 }
 
 const InputText = (props: IInputTextProps) => {
@@ -48,18 +50,28 @@ const InputText = (props: IInputTextProps) => {
     leftComponent,
     onChangeText,
     onPress,
+    onFocus,
+    onBlur,
     ...rest
-  } = props; 
+  } = props;
 
   const [isFocused, setIsFocused] = useState(false);
+  // console.log('🚀 ~ InputText ~ isFocused:', isFocused);
 
-  const onFocus = () => {
+  const onInputFocus = (event: any) => {
     setIsFocused(true);
+    if (onFocus) {
+      onFocus(event);
+    }
     // props?.onFocusEffect && props?.onFocusEffect();
   };
 
-  const onBlur = () => {
+  const onInputBlur = (event: any) => {
+    // console.log('Inside on blur');
     setIsFocused(false);
+    if (onBlur) {
+      onBlur(event);
+    }
     // props?.onBlurEffect && props?.onBlurEffect();
   };
 
@@ -76,7 +88,7 @@ const InputText = (props: IInputTextProps) => {
       <View
         style={[
           styles.container,
-          {borderColor: isFocused ? colors.primary : colors.border},
+          {borderColor: isFocused ? 'green' : 'black'},
           {
             backgroundColor: editable ? colors.white : colors.disable,
           },
@@ -101,8 +113,8 @@ const InputText = (props: IInputTextProps) => {
           value={value}
           placeholder={placeholder}
           onChangeText={onChangeText}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          onFocus={onInputFocus}
+          onBlur={onInputBlur}
           {...rest}
         />
 
@@ -130,7 +142,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     borderRadius: wp(58),
     padding: ph(15),
-    paddingHorizontal: ph(20)
+    paddingHorizontal: ph(20),
   },
   smallTitle: {
     fontFamily: fonts.MEDIUM,
@@ -140,7 +152,7 @@ const styles = StyleSheet.create({
   descriptionText: {
     fontFamily: fonts.REGULAR,
     fontSize: fontSize.FS_18,
-    color : colors.black
+    color: colors.black,
   },
   inputText: {
     fontFamily: fonts.REGULAR,
