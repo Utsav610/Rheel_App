@@ -9,7 +9,7 @@ export default StyleSheet.create({
         fontSize : fontSize.FS_16,
     },
     gradientColor : ['#0A2F1E', '#118368', '#0A2F1E'],
-
+    separationGradient : ['#d3d3d3', '#000', '#d3d3d3'] ,
     seperation : {
         width: '100%',
             height: 2,

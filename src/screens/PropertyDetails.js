@@ -128,7 +128,7 @@ const PropertyDetails = () => {
           </View>
         </View>
         <LinearGradient
-          colors={['#d3d3d3', '#000', '#d3d3d3']} // Light at both ends and dark in the center
+          colors={commonStyle.separationGradient}// Light at both ends and dark in the center
           start={{x: 0, y: 0}} // Gradient starts from the left
           end={{x: 1, y: 0}} // Gradient ends on the right
           style={styles.separatorLine}
