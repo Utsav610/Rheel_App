@@ -28,9 +28,9 @@ export default function PropertyCard(props) {
       style={[styles.cardContainer]}
       onPress={onPress}
     >
-      <View>
+      <View style={{width: SCREEN_WIDTH / 1.12}}>
         <Image
-          source={images.cardBackgroundImg}
+          source={{uri: 'https://ideal.thewebtual.com/idealapp/internal/public/storage/chapter/1731496769619.webp'}}
           style={styles.cardImage}
         />
         <TouchableOpacity style={styles.favoriteIcon}>
@@ -82,6 +82,8 @@ const styles = StyleSheet.create({
     aspectRatio: 16 / 9,
     resizeMode: 'cover',
     borderRadius: wp(30),
+    borderWidth: wp(1),
+    borderColor: colors.border
   },
   favoriteIcon: {
     alignItems: 'center',

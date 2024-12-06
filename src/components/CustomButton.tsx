@@ -22,6 +22,8 @@ export interface IButtonProps
   extends React.ComponentProps<typeof TouchableOpacity> {
   disabled?: boolean;
   style?: StyleProp<ViewStyle>;
+  linearStyle?: StyleProp<ViewStyle>;
+  linearbtnStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   title?: string;
   children?: ReactNode;
@@ -36,6 +38,8 @@ const CustomButton = (props: IButtonProps) => {
   const {
     disabled,
     style,
+    linearStyle,
+    linearbtnStyle,
     textStyle,
     title,
     children,
@@ -53,7 +57,7 @@ const CustomButton = (props: IButtonProps) => {
     {...(style as ViewStyle)},
   ];
 
-  const btngradiantStyle = [styles.btnLGStyle, {...(style as ViewStyle)}];
+  const btngradiantStyle = [styles.btnLGStyle, {...(linearStyle as ViewStyle)}];
 
   return (
     <>
@@ -65,7 +69,7 @@ const CustomButton = (props: IButtonProps) => {
           end={{x: 1, y: 0}}>
           <TouchableOpacity
             disabled={disabled}
-            // style={buttonStyle}
+            style={linearbtnStyle}
             onPress={onPress}
             hitSlop={{top: ph(10), left: ph(10), right: ph(10), bottom: ph(10)}}
             {...rest}>

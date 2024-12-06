@@ -109,7 +109,7 @@ const Home = () => {
             ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
             ListHeaderComponent={<View style={styles.listPadding} />}
             ListFooterComponent={<View style={styles.listPadding} />}
-            renderItem={({item}) => <PropertyCard />}
+            renderItem={({item}) => <PropertyCard onPress={() => navigate(routeNames.PropertyDetails)}/>}
           />
         </View>
       </KeyboardAwareScrollView>

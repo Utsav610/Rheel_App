@@ -15,4 +15,5 @@ export default routeNames = {
 
     // other screens
     AllProperties : 'AllProperties',
+    PropertyDetails : 'PropertyDetails'
 }

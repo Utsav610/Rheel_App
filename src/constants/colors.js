@@ -34,5 +34,6 @@ export const colors = {
   title : "#C2931C",
   defaultText : "#6B6B6B",
   backgroundContainer : '#F8FFFC',
-  minColor : '#016D54'
+  minColor : '#016D54',
+  seperation : '#D9D9D9'
 };
