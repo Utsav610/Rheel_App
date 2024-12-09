@@ -93,7 +93,9 @@ const Home = () => {
             </Carousel>
           </View>
           <View style={styles.topPropertiesContainer}>
-            <Text style={[commonStyle.titleText,{color:colors.title}]}>Top Properties</Text>
+            <Text style={[commonStyle.titleText, {color: colors.title}]}>
+              Top Properties
+            </Text>
             <TouchableOpacity
               onPress={() => navigate(routeNames.AllProperties)}>
               <Text style={styles.seeAllText}>See All</Text>
@@ -109,7 +111,11 @@ const Home = () => {
             ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
             ListHeaderComponent={<View style={styles.listPadding} />}
             ListFooterComponent={<View style={styles.listPadding} />}
-            renderItem={({item}) => <PropertyCard onPress={() => navigate(routeNames.PropertyDetails)}/>}
+            renderItem={({item}) => (
+              <PropertyCard
+                onPress={() => navigate(routeNames.PropertyDetails)}
+              />
+            )}
           />
         </View>
       </KeyboardAwareScrollView>

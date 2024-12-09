@@ -12,6 +12,7 @@ import PropertyCardMarkerIcon from '../assets/images/PropertyCardMarkerIcon';
 import PropertyCardLiviIcon from '../assets/images/PropertyCardLiviIcon';
 import PropertyCardBathIcon from '../assets/images/PropertyCardBathIcon';
 import PropertyCardBedIcon from '../assets/images/PropertyCardBedIcon';
+import commonStyle from '../constants/commonStyle';
 
 export default function PropertyCard(props) {
   const {
@@ -21,50 +22,64 @@ export default function PropertyCard(props) {
     image = null,
     isLock = false,
     description = '',
+    Date = null,
+    cardContainerStyle = {},
   } = props || {};
   return (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      style={[styles.cardContainer]}
-      onPress={onPress}
-    >
-      <View style={{width: SCREEN_WIDTH / 1.12}}>
-        <Image
-          source={{uri: 'https://ideal.thewebtual.com/idealapp/internal/public/storage/chapter/1731496769619.webp'}}
-          style={styles.cardImage}
-        />
-        <TouchableOpacity style={styles.favoriteIcon}>
-          <FavoriteIcon />
-        </TouchableOpacity>
-        <View style={styles.propertyDetails}>
-          <View style={styles.innerDetailCard}>
-            <PropertyCardLiviIcon />
-            <Text style={styles.detailText}>2 Livi</Text>
+    <>
+      {/* {Date ? (
+        <Text
+          style={[
+            commonStyle.REGULAR_16,
+            {color: colors.defaultText, marginHorizontal: ph(20)},
+          ]}>
+          {Date}
+        </Text>
+      ) : null} */}
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={[styles.cardContainer, cardContainerStyle]}
+        onPress={onPress}>
+        <View style={{width: SCREEN_WIDTH / 1.12}}>
+          <Image
+            source={{
+              uri: 'https://ideal.thewebtual.com/idealapp/internal/public/storage/chapter/1731496769619.webp',
+            }}
+            style={styles.cardImage}
+          />
+          <TouchableOpacity style={styles.favoriteIcon}>
+            <FavoriteIcon />
+          </TouchableOpacity>
+          <View style={styles.propertyDetails}>
+            <View style={styles.innerDetailCard}>
+              <PropertyCardLiviIcon />
+              <Text style={styles.detailText}>2 Livi</Text>
+            </View>
+            <View style={styles.innerDetailCard}>
+              <PropertyCardBathIcon />
+              <Text style={styles.detailText}>6 Bath</Text>
+            </View>
+            <View style={styles.innerDetailCard}>
+              <PropertyCardBedIcon />
+              <Text style={styles.detailText}>6 Beds</Text>
+            </View>
           </View>
-          <View style={styles.innerDetailCard}>
-            <PropertyCardBathIcon />
-            <Text style={styles.detailText}>6 Bath</Text>
+        </View>
+        <View style={styles.propertyInfo}>
+          <View style={styles.outerDetailCard}>
+            <Icon name="circle" color={colors.minColor} />
+            <Text style={styles.propertyText}>For Sale</Text>
           </View>
-          <View style={styles.innerDetailCard}>
-            <PropertyCardBedIcon />
-            <Text style={styles.detailText}>6 Beds</Text>
+          <View style={styles.outerDetailCard}>
+            <PropertyCardMarkerIcon />
+            <Text style={styles.propertyLocation}>Kukwaba, Abuja, FCT</Text>
+          </View>
+          <View style={styles.outerDetailCard}>
+            <Text style={styles.propertyPrice}>₦100,000,000</Text>
           </View>
         </View>
-      </View>
-      <View style={styles.propertyInfo}>
-        <View style={styles.outerDetailCard}>
-          <Icon name="circle" color={colors.minColor} />
-          <Text style={styles.propertyText}>For Sale</Text>
-        </View>
-        <View style={styles.outerDetailCard}>
-          <PropertyCardMarkerIcon />
-          <Text style={styles.propertyLocation}>Kukwaba, Abuja, FCT</Text>
-        </View>
-        <View style={styles.outerDetailCard}>
-          <Text style={styles.propertyPrice}>₦100,000,000</Text>
-        </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </>
   );
 }
 
@@ -83,7 +98,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     borderRadius: wp(30),
     borderWidth: wp(1),
-    borderColor: colors.border
+    borderColor: colors.border,
   },
   favoriteIcon: {
     alignItems: 'center',

@@ -33,6 +33,10 @@ export default StyleSheet.create({
         fontFamily: fonts.REGULAR,
         fontSize : fontSize.FS_16,
     },
+    REGULAR_18 : {
+        fontFamily: fonts.REGULAR,
+        fontSize : fontSize.FS_18,
+    },
     MEDIUM_14 : {
         fontFamily: fonts.MEDIUM,
         fontSize : fontSize.FS_14,
@@ -64,6 +68,14 @@ export default StyleSheet.create({
     SEMIBOLD_24 : {
         fontFamily: fonts.SEMIBOLD,
         fontSize : fontSize.FS_24,
+    },
+    BOLD_13 : {
+        fontFamily: fonts.BOLD,
+        fontSize : fontSize.FS_13,
+    },
+    BOLD_14 : {
+        fontFamily: fonts.BOLD,
+        fontSize : fontSize.FS_14,
     },
     BOLD_16 : {
         fontFamily: fonts.BOLD,
