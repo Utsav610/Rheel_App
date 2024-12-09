@@ -21,6 +21,7 @@ const My_Inquiries = () => {
         // isBack={true}
         // onBackPress={() => goBack()}
       />
+            <ScrollView style={styles.scrollContainer}>
         <Text
           style={[
             commonStyle.SEMIBOLD_20,
@@ -28,12 +29,12 @@ const My_Inquiries = () => {
           ]}>
           Inquiries List
         </Text>
-      <ScrollView style={styles.scrollContainer}>
         <FlatList
           data={[1, 1, 1, 1, 1, 1, 1]}
           showsHorizontalScrollIndicator={false}
           snapToInterval={cardWidth}
           decelerationRate="fast"
+          style={{marginBottom:ph(120)}}
           scrollEventThrottle={16}
           ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
           ListHeaderComponent={<View style={styles.listPadding} />}

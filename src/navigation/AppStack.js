@@ -28,6 +28,7 @@ import Profile from '../screens/DashboardScreens/Profile';
 import AllProperties from '../screens/AllProperties';
 import PropertyDetails from '../screens/PropertyDetails';
 import AgentProfile from '../screens/AgentProfile';
+import PropertyListingForm from '../screens/PropertyListingForm';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -183,6 +184,7 @@ const AppStack = () => {
       <Stack.Screen name={routeNames.AllProperties} component={AllProperties} />
       <Stack.Screen name={routeNames.PropertyDetails} component={PropertyDetails} />
       <Stack.Screen name={routeNames.AgentProfile} component={AgentProfile} />
+      <Stack.Screen name={routeNames.PropertyListingForm} component={PropertyListingForm} />
     </Stack.Navigator>
   );
 };

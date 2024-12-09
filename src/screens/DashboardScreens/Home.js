@@ -59,7 +59,7 @@ const Home = () => {
           </TouchableOpacity>
         }
         rightComponent={
-          <TouchableOpacity style={styles.addButton}>
+          <TouchableOpacity style={styles.addButton} onPress={() => navigate(routeNames.PropertyListingForm)}>
             <Icon name={'plus'} size={wp(30)} color={'black'} />
           </TouchableOpacity>
         }
@@ -134,6 +134,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     marginTop: ph(10),
+    marginBottom:ph(120)
   },
   profileButton: {
     borderRadius: wp(50),
