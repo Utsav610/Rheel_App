@@ -12,6 +12,19 @@ import CustomButton from '../components/CustomButton';
 
 const PropertyListingForm = () => {
   const [formType, setFormType] = useState('Sell');
+  const initialValues = {
+    txtLocation : '',
+    dropAgent,
+    txtAvailableFrom : '',
+    dropPropertyType,
+    dropTypeOfLet,
+    dropBathroom,
+    dropLivingRoom,
+    dropBedroom,
+    txtPerAnnum,
+    txtCalenderMonth,
+    txtPropertyDetails,
+  }
   return (
     <SafeAreaWrapper>
       <HeaderView
@@ -42,10 +55,12 @@ const PropertyListingForm = () => {
               paddingHorizontal: ph(20),
             }}
             title="Sell"
-            textStyle={{color: formType == 'Sell' ? colors.white : colors.black}}
+            textStyle={{
+              color: formType == 'Sell' ? colors.white : colors.black,
+            }}
           />
           <CustomButton
-          onPress={() => setFormType('Rent')}
+            onPress={() => setFormType('Rent')}
             isLinear={formType == 'Rent' ? true : false}
             linearStyle={{
               paddingVertical: ph(8),
@@ -58,9 +73,12 @@ const PropertyListingForm = () => {
               paddingHorizontal: ph(20),
             }}
             title="Rent"
-            textStyle={{color: formType == 'Rent' ? colors.white : colors.black}}
+            textStyle={{
+              color: formType == 'Rent' ? colors.white : colors.black,
+            }}
           />
         </View>
+
       </KeyboardAwareScrollView>
     </SafeAreaWrapper>
   );
