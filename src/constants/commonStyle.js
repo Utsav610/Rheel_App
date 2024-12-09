@@ -41,6 +41,10 @@ export default StyleSheet.create({
         fontFamily: fonts.MEDIUM,
         fontSize : fontSize.FS_14,
     },
+    MEDIUM_16 : {
+        fontFamily: fonts.MEDIUM,
+        fontSize : fontSize.FS_16,
+    },
     SEMIBOLD_12 : {
         fontFamily: fonts.SEMIBOLD,
         fontSize : fontSize.FS_12,

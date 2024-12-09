@@ -1,13 +1,18 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, StyleProp, ViewStyle} from 'react-native';
 import React, {ReactNode, useState} from 'react';
 import {Dropdown} from 'react-native-element-dropdown';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { ph } from '../utils/ResponsiveScreen';
+import {ph} from '../utils/ResponsiveScreen';
+import commonStyle from '../constants/commonStyle';
+import {colors} from '../constants/colors';
 
 export interface IDropDownProps extends React.ComponentProps<typeof View> {
   data?: object;
   isSerach?: boolean;
+  title?: string;
   searchPlaceholder?: string;
+  style?: StyleProp<ViewStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
   placeholder?: string;
   leftComponent?: ReactNode;
   renderItem?: () => void;
@@ -27,30 +32,49 @@ const datas = [
 const DropDownView = (props: IDropDownProps) => {
   const [value, setValue] = useState('');
   const [isFocus, setIsFocus] = useState(false);
-  const {data, isSerach = false, searchPlaceholder,renderItem,placeholder,leftComponent} = props;
+  const {
+    data,
+    isSerach = false,
+    searchPlaceholder,
+    style,
+    title,
+    renderItem,
+    placeholder,
+    leftComponent,
+    containerStyle
+  } = props;
   return (
-    <View>
+    <View
+      style={[
+        { flex: 1,},
+        {...(containerStyle as ViewStyle)},
+      ]}>
+      <Text style={[commonStyle.MEDIUM_16, {color: colors.black}]}>
+        {title}
+      </Text>
       <Dropdown
-        data={data}
+        data={datas}
         labelField="label"
         valueField="value"
         search={isSerach}
+        style={style}
         searchPlaceholder={searchPlaceholder}
         placeholder={placeholder}
         value={value}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
-        onChange={(item) => {
+        onChange={item => {
           setValue(item.value);
           setIsFocus(false);
         }}
-        renderItem={(item) => {
+        placeholderStyle={[commonStyle.REGULAR_16, {color: colors.defaultText}]}
+        renderItem={item => {
           return (
             <View style={styles.item}>
               {leftComponent && leftComponent}
-            <Text style={styles.textItem}>{item.label}</Text>
-          </View>
-          )
+              <Text style={styles.textItem}>{item.label}</Text>
+            </View>
+          );
         }}
       />
     </View>
@@ -62,7 +86,7 @@ export default DropDownView;
 const styles = StyleSheet.create({
   item: {
     // borderWidth:1,
-    gap:ph(10),
+    gap: ph(10),
     padding: 17,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -72,4 +96,4 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
   },
-})
+});

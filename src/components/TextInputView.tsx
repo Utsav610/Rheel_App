@@ -18,6 +18,7 @@ export interface IInputTextProps
   style?: StyleProp<ViewStyle>;
   containerStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
+  titleStyle?: StyleProp<TextStyle>;
   leftPrefix?: string;
   rightPrefix?: string;
   title?: string;
@@ -39,6 +40,7 @@ const InputText = (props: IInputTextProps) => {
     style,
     containerStyle,
     textStyle,
+    titleStyle,
     value,
     title,
     subTitle,
@@ -78,7 +80,7 @@ const InputText = (props: IInputTextProps) => {
   return (
     <View style={[{...(style as ViewStyle)}]}>
       {title ? (
-        <Text style={[styles.smallTitle, {flex: 1, marginBottom: ph(5)}]}>
+        <Text style={[styles.smallTitle, {flex: 1, marginBottom: ph(5)},{...(titleStyle as TextStyle)}]}>
           {title}{' '}
           <Text style={[styles.descriptionText, {fontSize: fontSize.FS_14}]}>
             {subTitle}
