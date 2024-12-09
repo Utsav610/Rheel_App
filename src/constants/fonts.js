@@ -1,11 +1,11 @@
 import { fontPixel } from "../utils/ResponsiveScreen";
 
 export const fonts={
-    REGULAR : 'SFProText-Regular',
-    LIGHT : 'SFProText-Light',
-    MEDIUM : 'SFProText-Medium',
-    SEMIBOLD : 'SFProText-Semibold',
-    BOLD : 'SFProText-Bold'
+    REGULAR : 'Inter-Regular',
+    LIGHT : 'Inter-Light',
+    MEDIUM : 'Inter-Medium',
+    SEMIBOLD : 'Inter-Semibold',
+    BOLD : 'Inter-Bold'
 }
 
 export const fontSize = {
