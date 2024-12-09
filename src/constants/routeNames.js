@@ -15,5 +15,6 @@ export default routeNames = {
 
     // other screens
     AllProperties : 'AllProperties',
-    PropertyDetails : 'PropertyDetails'
+    PropertyDetails : 'PropertyDetails',
+    AgentProfile : 'AgentProfile',
 }

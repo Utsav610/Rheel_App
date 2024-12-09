@@ -27,6 +27,7 @@ import {colors} from '../constants/colors';
 import Profile from '../screens/DashboardScreens/Profile';
 import AllProperties from '../screens/AllProperties';
 import PropertyDetails from '../screens/PropertyDetails';
+import AgentProfile from '../screens/AgentProfile';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -181,6 +182,7 @@ const AppStack = () => {
 
       <Stack.Screen name={routeNames.AllProperties} component={AllProperties} />
       <Stack.Screen name={routeNames.PropertyDetails} component={PropertyDetails} />
+      <Stack.Screen name={routeNames.AgentProfile} component={AgentProfile} />
     </Stack.Navigator>
   );
 };

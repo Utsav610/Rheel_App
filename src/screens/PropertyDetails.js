@@ -9,7 +9,7 @@ import {
 import React, {useState} from 'react';
 import SafeAreaWrapper from '../components/SafeAreaWrapper';
 import HeaderView from '../components/HeaderView';
-import {goBack} from '../navigation/RootNavigation';
+import {goBack, navigate} from '../navigation/RootNavigation';
 import {colors} from '../constants/colors';
 import {images} from '../constants/images';
 import {ph, wp} from '../utils/ResponsiveScreen';
@@ -35,6 +35,7 @@ import CustomButton from '../components/CustomButton';
 import PropertyDetailEmailIcon from '../assets/images/PropertyDetailEmailIcon';
 import PropertyDetailWhathappIcon from '../assets/images/PropertyDetailWhathappIcon';
 import PropertyDetailBedIcon from '../assets/images/PropertyDetailBedIcon';
+import routeNames from '../constants/routeNames';
 
 const PropertyDetails = () => {
   const [photos, setPhotos] = useState(false);
@@ -244,7 +245,7 @@ const PropertyDetails = () => {
                 </Text>
               </View>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigate(routeNames.AgentProfile)}>
               <Text
                 style={[commonStyle.SEMIBOLD_16, {color: colors.defaultText}]}>
                 View Profile
