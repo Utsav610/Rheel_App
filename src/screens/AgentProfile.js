@@ -110,7 +110,7 @@ const AgentProfile = () => {
           renderItem={({item}) => (
             <PropertyCard
               onPress={() => navigate(routeNames.PropertyDetails)}
-              cardContainerStyle={{marginTop:ph(20)}}
+              cardContainerStyle={{marginTop: ph(20)}}
             />
           )}
         />
@@ -122,10 +122,10 @@ const AgentProfile = () => {
           Review
         </Text>
         <FlatList
-          data={[1, 1, 1, 1, 1, 1, 1,1,1,1,1,1,1,1,1,1,1]}
+          data={[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
           horizontal
           showsHorizontalScrollIndicator={false}
-          style={{marginVertical:ph(10)}}
+          style={{marginVertical: ph(10)}}
           snapToInterval={reviceCard}
           decelerationRate="fast"
           scrollEventThrottle={16}
@@ -135,22 +135,49 @@ const AgentProfile = () => {
           renderItem={({item}) => (
             <View style={styles.reviewCardContainer}>
               <View style={styles.innerCardContainer}>
-                <Image source={images.defaultProfileImg} style={{width:wp(50),height:wp(50)}}/>
-                <View style={{flexDirection:'row',alignItems:'center',gap:ph(2),marginTop:ph(5)}}>
+                <Image
+                  source={images.defaultProfileImg}
+                  style={{width: wp(50), height: wp(50)}}
+                />
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    gap: ph(2),
+                    marginTop: ph(5),
+                  }}>
                   <OwnerProfileStarIcon />
                   <Text style={commonStyle.BOLD_13}>5</Text>
                 </View>
-                <Text style={[commonStyle.BOLD_14,{color:colors.defaultText,marginTop:ph(7)}]}>Wade Warren</Text>
-                <Text style={[commonStyle.REGULAR_10,{color:'#8C8C8C',flexWrap:'wrap',flex:1,textAlign:'center'}]} >Jackob Smith helped us find the perfect apartment in record time! Highly professional and easy to work with.</Text>
+                <Text
+                  style={[
+                    commonStyle.BOLD_14,
+                    {color: colors.defaultText, marginTop: ph(7)},
+                  ]}>
+                  Wade Warren
+                </Text>
+                <Text
+                  style={[
+                    commonStyle.REGULAR_10,
+                    {
+                      color: '#8C8C8C',
+                      flexWrap: 'wrap',
+                      flex: 1,
+                      textAlign: 'center',
+                    },
+                  ]}>
+                  Jackob Smith helped us find the perfect apartment in record
+                  time! Highly professional and easy to work with.
+                </Text>
               </View>
             </View>
           )}
         />
         <View
           style={{
-            gap:ph(20),
-            marginHorizontal:ph(20),
-            marginVertical:ph(28),
+            gap: ph(20),
+            marginHorizontal: ph(20),
+            marginVertical: ph(28),
             flexDirection: 'row',
             alignItems: 'center',
             // justifyContent: 'space-between',
@@ -168,12 +195,12 @@ const AgentProfile = () => {
             textStyle={{color: colors.defaultText}}
           />
           <CustomButton
-          isLinear={true}
+            isLinear={true}
             linearStyle={{
-              flex: 1
+              flex: 1,
             }}
             linearbtnStyle={{
-              alignItems:'center',
+              alignItems: 'center',
               flexDirection: 'row',
               gap: ph(5),
             }}
@@ -213,15 +240,14 @@ const styles = StyleSheet.create({
     height: ph(15),
   },
   reviewCardContainer: {
-    width: SCREEN_WIDTH/2.5,
-    paddingHorizontal:ph(10),
-    paddingVertical:ph(14),
-    borderWidth:wp(1),
-    borderColor:colors.seperation,
-    borderRadius:wp(24)
+    width: SCREEN_WIDTH / 2.5,
+    paddingHorizontal: ph(10),
+    paddingVertical: ph(14),
+    borderWidth: wp(1),
+    borderColor: colors.seperation,
+    borderRadius: wp(24),
   },
   innerCardContainer: {
-    alignItems:'center',
-    
-  }
+    alignItems: 'center',
+  },
 });

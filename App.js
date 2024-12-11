@@ -1,12 +1,16 @@
-import {View, Text} from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {fonts} from './src/constants/fonts';
 import AppNavigator from './src/navigation/AppNavigator';
+import Toast from 'react-native-toast-message';
 
 const App = () => {
   return (
     <>
+      <Toast
+        config={toastConfig}
+        swipeable={false}
+        topOffset={Platform.OS == 'android' ? 20 : 40}
+        bottomOffset={Platform.OS == 'android' ? 20 : 40}
+      />
       <AppNavigator />
     </>
   );
