@@ -6,7 +6,7 @@ import {
   FlatList,
   StyleSheet,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SafeAreaWrapper from '../../components/SafeAreaWrapper';
 import HeaderView from '../../components/HeaderView';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -23,10 +23,18 @@ import PropertyCard from '../../components/PropertyCard';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {navigate} from '../../navigation/RootNavigation';
 import routeNames from '../../constants/routeNames';
+import {Dropdown} from 'react-native-element-dropdown';
+import {storeSearchCity} from '../../redux/reducers/userReducer';
+import {useDispatch, useSelector} from 'react-redux';
+import { useIsFocused } from '@react-navigation/native';
 
 const Home = () => {
-  const [txtSearch, setTxtSearch] = useState('');
+  const cityData = useSelector(state => state.userRedux.city_data);
+  console.log('City Data', cityData);
+  const dispatch = useDispatch();
+  const [value, setValue] = useState(cityData.value);
   const cardWidth = SCREEN_WIDTH / 1.3 + ph(18);
+  const isFocused = useIsFocused()
 
   const renderItem = ({imagename, index}) => {
     return (
@@ -48,6 +56,10 @@ const Home = () => {
     );
   };
 
+  useEffect(() => {
+    setValue(cityData.value)
+  },[isFocused])
+
   return (
     <SafeAreaWrapper>
       <HeaderView
@@ -59,7 +71,9 @@ const Home = () => {
           </TouchableOpacity>
         }
         rightComponent={
-          <TouchableOpacity style={styles.addButton} onPress={() => navigate(routeNames.PropertyListingForm)}>
+          <TouchableOpacity
+            style={styles.addButton}
+            onPress={() => navigate(routeNames.PropertyListingForm)}>
             <Icon name={'plus'} size={wp(30)} color={'black'} />
           </TouchableOpacity>
         }
@@ -69,13 +83,45 @@ const Home = () => {
         showsVerticalScrollIndicator={false}
         style={styles.scrollContainer}>
         <View style={styles.mainContainer}>
-          <InputText
-            placeholder="Search by location"
-            leftComponent={<Icon name="magnify" size={25} />}
-            value={txtSearch}
-            containerStyle={styles.searchContainer}
-            maxLength={50}
-            onChangeText={text => setTxtSearch(text)}
+          <Dropdown
+            style={styles.searchContainer}
+            data={[
+              {label: 'Rajkot', value: '1'},
+              {label: 'Ahmedabad', value: '2'},
+              {label: 'Surat', value: '3'},
+            ]}
+            labelField="label"
+            valueField="value"
+            placeholder="Select by Location"
+            value={value}
+            placeholderStyle={[
+              commonStyle.REGULAR_16,
+              {color: colors.defaultText},
+            ]}
+            containerStyle={{borderRadius: ph(30), padding: ph(15)}}
+            onChange={item => {
+              console.log(item);
+              setValue(item.value);
+              dispatch(storeSearchCity(item));
+              navigate(routeNames.SearchResult);
+            }}
+            renderLeftIcon={() => (
+              <Icon name="magnify" size={25} style={{marginRight: ph(10)}} />
+            )}
+            renderRightIcon={() => <View></View>}
+            renderItem={item => {
+              return (
+                <View style={styles.item}>
+                  <Text
+                    style={[
+                      commonStyle.REGULAR_16,
+                      {color: colors.defaultText},
+                    ]}>
+                    {item.label}
+                  </Text>
+                </View>
+              );
+            }}
           />
           <View style={styles.carouselContainer}>
             <Carousel
@@ -134,7 +180,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     marginTop: ph(10),
-    marginBottom:ph(120)
+    marginBottom: ph(120),
   },
   profileButton: {
     borderRadius: wp(50),
@@ -153,8 +199,12 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     paddingHorizontal: ph(20),
+    // gap:ph(20),
+    borderWidth: wp(1),
     borderColor: colors.border,
     marginHorizontal: ph(18),
+    paddingVertical: ph(13),
+    borderRadius: ph(50),
   },
   carouselContainer: {
     marginTop: ph(20),
@@ -191,5 +241,13 @@ const styles = StyleSheet.create({
   listPadding: {
     width: wp(15),
     height: ph(15),
+  },
+  item: {
+    // borderWidth:1,
+    gap: ph(10),
+    padding: ph(10),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });

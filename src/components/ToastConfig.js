@@ -3,8 +3,8 @@ import Toast, {
   ErrorToast,
   InfoToast,
 } from 'react-native-toast-message';
-import {fontSize, fonts} from '../constants/fonts';
-import {colors} from '../constants/colors';
+import { fonts, fontSize } from '../constants/fonts';
+// import {colors} from '../constants/colors';
 import {ph, wp} from '../utils/ResponsiveScreen';
 import {colors} from '../constants/colors';
 

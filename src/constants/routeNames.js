@@ -18,4 +18,6 @@ export default routeNames = {
     PropertyDetails : 'PropertyDetails',
     AgentProfile : 'AgentProfile',
     PropertyListingForm : 'PropertyListingForm',
+    SearchResult : 'SearchResult',
+    Filter : 'Filter',
 }

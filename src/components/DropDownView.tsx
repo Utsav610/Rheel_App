@@ -16,6 +16,8 @@ export interface IDropDownProps extends React.ComponentProps<typeof View> {
   placeholder?: string;
   leftComponent?: ReactNode;
   renderItem?: () => void;
+  onChange?: () => void;
+  value?: any;
 }
 
 const datas = [
@@ -30,10 +32,11 @@ const datas = [
 ];
 
 const DropDownView = (props: IDropDownProps) => {
-  const [value, setValue] = useState('');
+  
   const [isFocus, setIsFocus] = useState(false);
   const {
     data,
+    onChange,
     isSerach = false,
     searchPlaceholder,
     style,
@@ -41,17 +44,16 @@ const DropDownView = (props: IDropDownProps) => {
     renderItem,
     placeholder,
     leftComponent,
-    containerStyle
+    value,
+    containerStyle,
   } = props;
   return (
-    <View
-      style={[
-        { flex: 1,},
-        {...(containerStyle as ViewStyle)},
-      ]}>
-      <Text style={[commonStyle.MEDIUM_16, {color: colors.black}]}>
-        {title}
-      </Text>
+    <View style={[{flex: 1}, {...(containerStyle as ViewStyle)}]}>
+      {title ? (
+        <Text style={[commonStyle.MEDIUM_16, {color: colors.black}]}>
+          {title}
+        </Text>
+      ) : null}
       <Dropdown
         data={datas}
         labelField="label"
@@ -64,7 +66,9 @@ const DropDownView = (props: IDropDownProps) => {
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         onChange={item => {
-          setValue(item.value);
+          console.log("Dropdown item: -",item)
+          onChange(item);
+          // setValue(item.value);
           setIsFocus(false);
         }}
         placeholderStyle={[commonStyle.REGULAR_16, {color: colors.defaultText}]}

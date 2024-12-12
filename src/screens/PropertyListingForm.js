@@ -78,9 +78,7 @@ const PropertyListingForm = () => {
             }}
           />
         </View>
-        {formType == 'Sell' && <SellPropertyForm /> || <RentPropertyForm />
-
-        }
+        {formType == 'Sell' && <SellPropertyForm /> || <RentPropertyForm />}
         
     </SafeAreaWrapper>
   );

@@ -203,6 +203,7 @@ const RentPropertyForm = () => {
             handleChange,
             handleBlur,
             handleSubmit,
+            setFieldValue,
             values,
             errors,
             touched,
@@ -247,6 +248,7 @@ const RentPropertyForm = () => {
                     alignItems: 'center',
                   }}
                   placeholder="Choose"
+                  onChange={item => setFieldValue('dropAgent',item)}
                 />
                 <InputText
                   title="Available From"
@@ -292,6 +294,7 @@ const RentPropertyForm = () => {
                     alignItems: 'center',
                   }}
                   placeholder="Choose"
+                  onChange={item => setFieldValue('dropPropertyType',item)}
                 />
                 <DropDownView
                   title="Type of Let"
@@ -307,6 +310,7 @@ const RentPropertyForm = () => {
                     alignItems: 'center',
                   }}
                   placeholder="Choose"
+                  onChange={item => setFieldValue('dropTypeOfLet',item)}
                 />
               </View>
               <InputText
@@ -362,6 +366,7 @@ const RentPropertyForm = () => {
                   alignItems: 'center',
                 }}
                 placeholder="Choose"
+                onChange={item => setFieldValue('dropBathroom',item)}
               />
 
               <View
@@ -384,6 +389,7 @@ const RentPropertyForm = () => {
                     alignItems: 'center',
                   }}
                   placeholder="Choose"
+                  onChange={item => setFieldValue('dropLivingRoom',item)}
                 />
                 <DropDownView
                   title="Bedroom"
@@ -399,6 +405,7 @@ const RentPropertyForm = () => {
                     alignItems: 'center',
                   }}
                   placeholder="Choose"
+                  onChange={item => setFieldValue('dropBedroom',item)}
                 />
               </View>
               <InputText
@@ -429,9 +436,9 @@ const RentPropertyForm = () => {
                 onChangeText={handleChange('txtPropertyDetails')}
                 onBlur={handleBlur('txtPropertyDetails')}
                 errorText={
-                  errors.txtLocation &&
-                  touched.txtLocation &&
-                  errors.txtLocation
+                  errors.txtPropertyDetails &&
+                  touched.txtPropertyDetails &&
+                  errors.txtPropertyDetails
                 }
               />
               <View style={{marginTop: ph(15)}}>
